@@ -1,0 +1,30 @@
+# ----------------
+# DEPLOYMENT FILE
+# ----------------
+# File name: deploy.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: my-pod1
+  template:
+    metadata:
+      labels:
+        name: my-pod1
+    spec:
+      containers:
+      - name: container1
+        image: pandacloud/webapp3:latest    # Enter your Image Name here
+        ports:
+        - containerPort: 80   # This should match the EXPOSE in Dockerfile
+...
+
+# Commands
+# kubectl apply -f deploy.yaml
+# kubectl get deploy
+# kubectl get pods                #(ensure all the pods are in running state)

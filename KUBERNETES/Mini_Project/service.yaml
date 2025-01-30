@@ -1,0 +1,25 @@
+# ----------------
+# SERVICE
+# ----------------
+# Filename: service.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: LoadBalancer
+  selector:
+    name: my-pod1
+  ports:
+    - protocol: TCP
+      port: 3001            # Service Port
+      targetPort: 80        # Container Port
+      #NodePort: 31000       # Node Port
+...
+
+# Commands
+# kubectl apply -f service.yaml
+# kubectl get service                #(take a note of the Node-Port)
+
+# Access the application from the browser, using "EC2-Node-PublicIP:<Node-Port>"
