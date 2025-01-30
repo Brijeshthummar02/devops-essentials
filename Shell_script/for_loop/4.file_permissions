@@ -1,0 +1,13 @@
+#!/bin/bash
+# Author: Nasir
+# Date: 29-07-2024 | Modified Date: 29-07-2024
+# Description: To give execute permissions to files w/ names File1 - 10
+
+echo "The current file permissions are:"
+ls -la
+for i in File*
+do
+chmod a+x $i 
+done
+echo "The permissions have been changed as below:"
+ls -la

@@ -1,0 +1,50 @@
+#!/bin/bash
+# Description:
+  # 1. To check if user exists & then add a user
+  # 2. Add user comments
+  # 3. Add user ID (UID)
+  
+while true; do
+    echo "PLEASE ENTER USERNAME:"
+    read u
+
+    if grep -q "^$u:" /etc/passwd; then
+        echo "Oops: The user $u already exists, please choose a different user."
+    else
+        echo "Do you want to add a comment? (Y/N)"
+        read choice1
+
+        if [ "$choice1" == "Y" ] ; then
+            echo "Please add user comments:"
+            read c
+
+            echo "Do you want to add a UID? (Y/N)"
+            read choice2
+
+            if [ "$choice2" == "Y" ]; then
+                while true; do
+                    echo "Please add UID:"
+                    read uid
+
+                    if grep -q "$uid:" /etc/passwd; then
+                        echo "Oops: The UID $uid already exists, please choose a different UID."
+                    else
+                        sudo useradd "$u" -c "$c" -u "$uid"
+                        echo "The user $u has been added with comments '$c' and UID $uid."
+                        break
+                    fi
+                done
+            else
+                sudo useradd "$u" -c "$c"
+                echo "The user $u has been added with comments '$c'."
+            fi
+        else
+            sudo useradd "$u"
+            echo "Success: The user $u has been added."
+        fi
+
+        echo "Please check the below list:"
+        grep "$u:" /etc/passwd
+        break
+    fi
+done

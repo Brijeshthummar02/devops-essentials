@@ -1,0 +1,23 @@
+#!/bin/bash
+# Author: Nasir
+# Date: 29-07-2024 | Modified Date: 29-07-2024
+# Description: To check if a file/dir exists using 'find' command
+  
+echo "Enter the dir/filename:"
+read name
+
+sudo find / -name "$name" > output
+
+if grep -q "$name" output
+then
+echo "File/dir exists in the below path(s):"
+cat output
+else
+echo "File/dir doesn't exist"
+fi
+
+# Note:
+# Alternatively, we can also redirect the output to --> /dev/null 2>&1
+# '/dev/null' is a special file in that discards all data written to it
+# Writing to /dev/null means ignoring the output.
+# 0: standard input (stdin); 1: standard output (stdout); 2: standard error (stderr)

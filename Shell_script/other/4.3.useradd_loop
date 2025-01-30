@@ -1,0 +1,24 @@
+#!/bin/bash
+# Description: To check if user exists & then add user using a loop
+while true
+do
+    echo "PLEASE ENTER USERNAME: "
+    read u
+    if
+        grep -q $u /etc/passwd
+        then
+        echo "The User $u already exists, please enter a different name"
+    else
+        sudo useradd $u
+        echo "The User $u has been added successfully"
+        echo "You can check the user list by running"
+        echo "cat /etc/passwd"
+        echo
+        echo "Do you want to add more users? (Y/N):"
+        read input
+        if [ $input == N ]
+            then
+            break  
+        fi
+    fi
+done

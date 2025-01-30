@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: Nasir
+# Date: 29-07-2024 | Modified Date: 29-07-2024
+#Description: To create files w/ names file1 - file10
+
+for i in {1..10}
+do
+touch File$i 
+done
+echo "The files are as follows:"
+ls File*

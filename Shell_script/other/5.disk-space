@@ -1,0 +1,35 @@
+#!/bin/bash
+# Author: Nasir
+# Date: 29-07-2024 | Modified Date: 31-07-2024
+# Description: To check disk space
+
+echo "# ---------------- #"
+echo "# CHECK DISK SPACE #"
+echo "# ---------------- #"
+echo
+echo "The disk space is below:"
+echo
+df -h
+echo
+
+# Check if space exceeds a defined limit
+a=$(df -h | tail -n +2 | awk '{print $5}' | cut -d '%' -f1)
+for i in $a
+do
+      if [ $i -ge 10 ]
+      then
+      echo "# ---------------- #"
+      echo "# DISK SPACE > 10% #"
+      echo "# ---------------- #"
+      echo
+      echo "Warning"
+      echo "The disk space is more than 10% for below for systems:"
+      echo $(df -h | grep $i | awk '{print $1}')
+      echo
+      fi
+done
+
+
+# Note:
+# cut -d '%' -f1: This will discard "%" & filter only the 1st value (d: delimeter; f: field)
+# try using this line: echo "Running out of space \"$partition ($i%)\" on $(hostname) as on $(date)"
