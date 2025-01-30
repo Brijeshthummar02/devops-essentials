@@ -1,0 +1,14 @@
+# Install tree package in your Linux system
+# Eg: 
+  # sudo yum install tree -y
+# Run 'tree' command in your 'jenkins-setup' directory, it will output below
+
+jenkins-setup/
+├── defaults/
+│   └── main.yaml        # Default variables (jenkins_node_ip)
+├── handlers/
+│   └── main.yaml        # Handlers for starting/restarting services
+├── tasks/
+│   └── main.yaml        # Tasks for installing Jenkins
+└── vars/
+    └── main.yaml        # Predefined variables (if needed)

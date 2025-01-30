@@ -1,0 +1,33 @@
+# -----------------------
+# ANSIBLE ADHOC COMMANDS
+# -----------------------
+# Note:
+# -m : module
+# -a : argument
+
+# Check connectivity of the Nodes
+ansible -m ping all             
+
+# Check hostnames of the Nodes
+ansible all -a "hostname"            
+
+# List all files & directories in Nodes
+ansible all -a "ls -a"               
+
+# Create a directory /tmp/testdir on all hosts
+ansible all -m file -a "path=/tmp/testdir state=directory"
+
+# Copy a local file to /tmp/ on the target machines.
+su ansadmin
+cd ~
+echo "This is Master File" > master-file
+ansible all -m copy -a "src=/home/ansadmin/master-file dest=/tmp/"
+
+# Check free memory
+ansible all -m shell -a "free -m"
+
+# Reboot the remote hosts
+ansible all -m reboot
+
+# Check listening ports
+ansible all -m shell -a "netstat -tuln"
