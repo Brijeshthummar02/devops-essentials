@@ -5,6 +5,7 @@ A complete collection of DevOps tools, scripts, configurations, and mini-project
 ## 📂 Repository Structure  
 
 - **Ansible** – Configuration management and automation scripts  
+- **Argo-CD** – GitOps continuous delivery for Kubernetes  
 - **Docker** – Dockerfiles, best practices, and container management  
 - **Git** – Commonly used Git commands and workflows  
 - **Installation_Scripts** – Scripts for setting up DevOps tools on various OS  
@@ -18,6 +19,7 @@ A complete collection of DevOps tools, scripts, configurations, and mini-project
 
 ✅ Ready-to-use DevOps scripts  
 ✅ CI/CD pipeline configurations  
+✅ GitOps with Argo CD for Kubernetes deployments  
 ✅ Infrastructure as Code (IaC) examples  
 ✅ Monitoring & logging solutions  
 ✅ Best practices for cloud-native DevOps  
